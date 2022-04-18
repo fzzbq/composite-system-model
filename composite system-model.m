@@ -1,0 +1,496 @@
+clc;clear
+EI1=2083.3e6;EI2=EI1/10;ks1=250e6;ks2=ks1/20;gama=2e4;h=1.543;q1=1e5;q2=0;L1=2;L2=5;s=0.5;ds=0.1;
+J=((ks1+ks2)*EI1/ks1+EI2)*ks1/(EI1*EI2);K=(ks1*ks2)/(EI1*EI2);M=ks1*gama*h/(EI1*EI2)+(ks1+ks2)*(q1+q2)/(EI1*EI2);
+Md=ks1*gama*h/(EI1*EI2)+(ks1+ks2)*q2/(EI1*EI2);
+beta2=((J-(J^2-4*K)^0.5)/8)^0.25;beta3=((J+(J^2-4*K)^0.5)/8)^0.25;beta7=(ks2/(4*EI2))^0.25;
+D2=1-4*(EI1/ks1)*(beta2^4);D3=1-4*(EI1/ks1)*(beta3^4);
+u1=gama*h/ks2;u2=-(q1+q2)/ks1;u2d=-q2/ks1;u3=M/K;u3d=Md/K;
+format long
+x=0;
+a0101=beta2;
+a0102=beta2;
+a0103=-beta2;
+a0104=beta2;
+a0105=beta3;
+a0106=beta3;
+a0107=-beta3;
+a0108=beta3;
+a0109=0;
+a0110=0;
+a0111=0;
+a0112=0;
+a0113=0;
+a0114=0;
+a0115=0;
+a0116=0;
+a0117=0;
+a0118=0;
+a0119=0;
+a0120=0;
+x=0;
+a0201=-2*beta2^3;
+a0202=2*beta2^3;
+a0203=2*beta2^3;
+a0204=2*beta2^3;
+a0205=-2*beta3^3;
+a0206=2*beta3^3;
+a0207=2*beta3^3;
+a0208=2*beta3^3;
+a0209=0;
+a0210=0;
+a0211=0;
+a0212=0;
+a0213=0;
+a0214=0;
+a0215=0;
+a0216=0;
+a0217=0;
+a0218=0;
+a0219=0;
+a0220=0;
+x=L1;
+a0301=0;
+a0302=0;
+a0303=0;
+a0304=0;
+a0305=0;
+a0306=0;
+a0307=0;
+a0308=0;
+a0309=-2*beta2^2*exp(beta2*x)*sin(beta2*x);
+a0310=2*beta2^2*exp(beta2*x)*cos(beta2*x);
+a0311=2*beta2^2*exp(-beta2*x)*sin(beta2*x);
+a0312=-2*beta2^2*exp(-beta2*x)*cos(beta2*x);
+a0313=-2*beta3^2*exp(beta3*x)*sin(beta3*x);
+a0314=2*beta3^2*exp(beta3*x)*cos(beta3*x);
+a0315=2*beta3^2*exp(-beta3*x)*sin(beta3*x);
+a0316=-2*beta3^2*exp(-beta3*x)*cos(beta3*x);
+a0317=0;
+a0318=0;
+a0319=0;
+a0320=0;
+x=L1;
+a0401=0;
+a0402=0;
+a0403=0;
+a0404=0;
+a0405=0;
+a0406=0;
+a0407=0;
+a0408=0;
+a0409=-2*beta2^3*exp(beta2*x)*(sin(beta2*x)+cos(beta2*x));
+a0410=2*beta2^3*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a0411=2*beta2^3*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a0412=2*beta2^3*exp(-beta2*x)*(sin(beta2*x)+cos(beta2*x));
+a0413=-2*beta3^3*exp(beta3*x)*(sin(beta3*x)+cos(beta3*x));
+a0414=2*beta3^3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a0415=2*beta3^3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a0416=2*beta3^3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a0417=0;
+a0418=0;
+a0419=0;
+a0420=0;
+x=0;
+a0501=D2*beta2;
+a0502=D2*beta2;
+a0503=-D2*beta2;
+a0504=D2*beta2;
+a0505=D3*beta3;
+a0506=D3*beta3;
+a0507=-D3*beta3;
+a0508=D3*beta3;
+a0509=0;
+a0510=0;
+a0511=0;
+a0512=0;
+a0513=0;
+a0514=0;
+a0515=0;
+a0516=0;
+a0517=0;
+a0518=0;
+a0519=0;
+a0520=0;
+x=0;
+a0601=-2*D2*beta2^3;
+a0602=2*D2*beta2^3;
+a0603=2*D2*beta2^3;
+a0604=2*D2*beta2^3;
+a0605=-2*D3*beta3^3;
+a0606=2*D3*beta3^3;
+a0607=2*D3*beta3^3;
+a0608=2*D3*beta3^3;
+a0609=0;
+a0610=0;
+a0611=0;
+a0612=0;
+a0613=0;
+a0614=0;
+a0615=0;
+a0616=0;
+a0617=0;
+a0618=0;
+a0619=0;
+a0620=0;
+x=L2;
+a0701=0;
+a0702=0;
+a0703=0;
+a0704=0;
+a0705=0;
+a0706=0;
+a0707=0;
+a0708=0;
+a0709=0;
+a0710=0;
+a0711=0;
+a0712=0;
+a0713=0;
+a0714=0;
+a0715=0;
+a0716=0;
+a0717=-2*beta7^2*exp(beta7*x)*sin(beta7*x);
+a0718=2*beta7^2*exp(beta7*x)*cos(beta7*x);
+a0719=2*beta7^2*exp(-beta7*x)*sin(beta7*x);
+a0720=-2*beta7^2*exp(-beta7*x)*cos(beta7*x);
+x=L2;
+a0801=0;
+a0802=0;
+a0803=0;
+a0804=0;
+a0805=0;
+a0806=0;
+a0807=0;
+a0808=0;
+a0809=0;
+a0810=0;
+a0811=0;
+a0812=0;
+a0813=0;
+a0814=0;
+a0815=0;
+a0816=0;
+a0817=-2*beta7^3*exp(beta7*x)*(cos(beta7*x)+sin(beta7*x));
+a0818=2*beta7^3*exp(beta7*x)*(cos(beta7*x)-sin(beta7*x));
+a0819=2*beta7^3*exp(-beta7*x)*(cos(beta7*x)-sin(beta7*x));
+a0820=2*beta7^3*exp(-beta7*x)*(cos(beta7*x)+sin(beta7*x));
+x=s;
+a0901=exp(beta2*x)*cos(beta2*x);
+a0902=exp(beta2*x)*sin(beta2*x);
+a0903=exp(-beta2*x)*cos(beta2*x);
+a0904=exp(-beta2*x)*sin(beta2*x);
+a0905=exp(beta3*x)*cos(beta3*x);
+a0906=exp(beta3*x)*sin(beta3*x);
+a0907=exp(-beta3*x)*cos(beta3*x);
+a0908=exp(-beta3*x)*sin(beta3*x);
+a0909=-exp(beta2*x)*cos(beta2*x);
+a0910=-exp(beta2*x)*sin(beta2*x);
+a0911=-exp(-beta2*x)*cos(beta2*x);
+a0912=-exp(-beta2*x)*sin(beta2*x);
+a0913=-exp(beta3*x)*cos(beta3*x);
+a0914=-exp(beta3*x)*sin(beta3*x);
+a0915=-exp(-beta3*x)*cos(beta3*x);
+a0916=-exp(-beta3*x)*sin(beta3*x);
+a0917=0;
+a0918=0;
+a0919=0;
+a0920=0;
+x=s;
+a1001=beta2*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1002=beta2*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1003=-beta2*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1004=beta2*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1005=beta3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1006=beta3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1007=-beta3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1008=beta3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1009=-beta2*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1010=-beta2*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1011=beta2*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1012=-beta2*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1013=-beta3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1014=-beta3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1015=beta3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1016=-beta3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1017=0;
+a1018=0;
+a1019=0;
+a1020=0;
+x=s;
+a1101=-2*beta2^2*exp(beta2*x)*sin(beta2*x);
+a1102=2*beta2^2*exp(beta2*x)*cos(beta2*x);
+a1103=2*beta2^2*exp(-beta2*x)*sin(beta2*x);
+a1104=-2*beta2^2*exp(-beta2*x)*cos(beta2*x);
+a1105=-2*beta3^2*exp(beta3*x)*sin(beta3*x);
+a1106=2*beta3^2*exp(beta3*x)*cos(beta3*x);
+a1107=2*beta3^2*exp(-beta3*x)*sin(beta3*x);
+a1108=-2*beta3^2*exp(-beta3*x)*cos(beta3*x);
+a1109=2*beta2^2*exp(beta2*x)*sin(beta2*x);
+a1110=-2*beta2^2*exp(beta2*x)*cos(beta2*x);
+a1111=-2*beta2^2*exp(-beta2*x)*sin(beta2*x);
+a1112=2*beta2^2*exp(-beta2*x)*cos(beta2*x);
+a1113=2*beta3^2*exp(beta3*x)*sin(beta3*x);
+a1114=-2*beta3^2*exp(beta3*x)*cos(beta3*x);
+a1115=-2*beta3^2*exp(-beta3*x)*sin(beta3*x);
+a1116=2*beta3^2*exp(-beta3*x)*cos(beta3*x);
+a1117=0;
+a1118=0;
+a1119=0;
+a1120=0;
+x=s;
+a1201=-2*beta2^3*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1202=2*beta2^3*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1203=2*beta2^3*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1204=2*beta2^3*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1205=-2*beta3^3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1206=2*beta3^3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1207=2*beta3^3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1208=2*beta3^3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1209=2*beta2^3*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1210=-2*beta2^3*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1211=-2*beta2^3*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1212=-2*beta2^3*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1213=2*beta3^3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1214=-2*beta3^3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1215=-2*beta3^3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1216=-2*beta3^3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1217=0;
+a1218=0;
+a1219=0;
+a1220=0;
+x=s;
+a1301=D2*exp(beta2*x)*cos(beta2*x);
+a1302=D2*exp(beta2*x)*sin(beta2*x);
+a1303=D2*exp(-beta2*x)*cos(beta2*x);
+a1304=D2*exp(-beta2*x)*sin(beta2*x);
+a1305=D3*exp(beta3*x)*cos(beta3*x);
+a1306=D3*exp(beta3*x)*sin(beta3*x);
+a1307=D3*exp(-beta3*x)*cos(beta3*x);
+a1308=D3*exp(-beta3*x)*sin(beta3*x);
+a1309=-D2*exp(beta2*x)*cos(beta2*x);
+a1310=-D2*exp(beta2*x)*sin(beta2*x);
+a1311=-D2*exp(-beta2*x)*cos(beta2*x);
+a1312=-D2*exp(-beta2*x)*sin(beta2*x);
+a1313=-D3*exp(beta3*x)*cos(beta3*x);
+a1314=-D3*exp(beta3*x)*sin(beta3*x);
+a1315=-D3*exp(-beta3*x)*cos(beta3*x);
+a1316=-D3*exp(-beta3*x)*sin(beta3*x);
+a1317=0;
+a1318=0;
+a1319=0;
+a1320=0;
+x=s;
+a1401=D2*beta2*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1402=D2*beta2*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1403=-D2*beta2*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1404=D2*beta2*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1405=D3*beta3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1406=D3*beta3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1407=-D3*beta3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1408=D3*beta3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1409=-D2*beta2*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1410=-D2*beta2*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1411=D2*beta2*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1412=-D2*beta2*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1413=-D3*beta3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1414=-D3*beta3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1415=D3*beta3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1416=-D3*beta3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1417=0;
+a1418=0;
+a1419=0;
+a1420=0;
+x=s;
+a1501=-2*D2*beta2^2*exp(beta2*x)*sin(beta2*x);
+a1502=2*D2*beta2^2*exp(beta2*x)*cos(beta2*x);
+a1503=2*D2*beta2^2*exp(-beta2*x)*sin(beta2*x);
+a1504=-2*D2*beta2^2*exp(-beta2*x)*cos(beta2*x);
+a1505=-2*D3*beta3^2*exp(beta3*x)*sin(beta3*x);
+a1506=2*D3*beta3^2*exp(beta3*x)*cos(beta3*x);
+a1507=2*D3*beta3^2*exp(-beta3*x)*sin(beta3*x);
+a1508=-2*D3*beta3^2*exp(-beta3*x)*cos(beta3*x);
+a1509=2*D2*beta2^2*exp(beta2*x)*sin(beta2*x);
+a1510=-2*D2*beta2^2*exp(beta2*x)*cos(beta2*x);
+a1511=-2*D2*beta2^2*exp(-beta2*x)*sin(beta2*x);
+a1512=2*D2*beta2^2*exp(-beta2*x)*cos(beta2*x);
+a1513=2*D3*beta3^2*exp(beta3*x)*sin(beta3*x);
+a1514=-2*D3*beta3^2*exp(beta3*x)*cos(beta3*x);
+a1515=-2*D3*beta3^2*exp(-beta3*x)*sin(beta3*x);
+a1516=2*D3*beta3^2*exp(-beta3*x)*cos(beta3*x);
+a1517=0;
+a1518=0;
+a1519=0;
+a1520=0;
+x=s;
+a1601=-2*D2*beta2^3*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1602=2*D2*beta2^3*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1603=2*D2*beta2^3*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1604=2*D2*beta2^3*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1605=-2*D3*beta3^3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1606=2*D3*beta3^3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1607=2*D3*beta3^3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1608=2*D3*beta3^3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1609=2*D2*beta2^3*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1610=-2*D2*beta2^3*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1611=-2*D2*beta2^3*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1612=-2*D2*beta2^3*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1613=2*D3*beta3^3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1614=-2*D3*beta3^3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1615=-2*D3*beta3^3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1616=-2*D3*beta3^3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1617=0;
+a1618=0;
+a1619=0;
+a1620=0;
+x=L1;
+a1701=0;
+a1702=0;
+a1703=0;
+a1704=0;
+a1705=0;
+a1706=0;
+a1707=0;
+a1708=0;
+a1709=D2*exp(beta2*x)*cos(beta2*x);
+a1710=D2*exp(beta2*x)*sin(beta2*x);
+a1711=D2*exp(-beta2*x)*cos(beta2*x);
+a1712=D2*exp(-beta2*x)*sin(beta2*x);
+a1713=D3*exp(beta3*x)*cos(beta3*x);
+a1714=D3*exp(beta3*x)*sin(beta3*x);
+a1715=D3*exp(-beta3*x)*cos(beta3*x);
+a1716=D3*exp(-beta3*x)*sin(beta3*x);
+a1717=-exp(beta7*x)*cos(beta7*x);
+a1718=-exp(beta7*x)*sin(beta7*x);
+a1719=-exp(-beta7*x)*cos(beta7*x);
+a1720=-exp(-beta7*x)*sin(beta7*x);
+x=L1;
+a1801=0;
+a1802=0;
+a1803=0;
+a1804=0;
+a1805=0;
+a1806=0;
+a1807=0;
+a1808=0;
+a1809=D2*beta2*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1810=D2*beta2*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1811=-D2*beta2*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a1812=D2*beta2*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a1813=D3*beta3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1814=D3*beta3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1815=-D3*beta3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a1816=D3*beta3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a1817=-beta7*exp(beta7*x)*(cos(beta7*x)-sin(beta7*x));
+a1818=-beta7*exp(beta7*x)*(cos(beta7*x)+sin(beta7*x));
+a1819=beta7*exp(-beta7*x)*(cos(beta7*x)+sin(beta7*x));
+a1820=-beta7*exp(-beta7*x)*(cos(beta7*x)-sin(beta7*x));
+x=L1;
+a1901=0;
+a1902=0;
+a1903=0;
+a1904=0;
+a1905=0;
+a1906=0;
+a1907=0;
+a1908=0;
+a1909=-2*D2*beta2^2*exp(beta2*x)*sin(beta2*x);
+a1910=2*D2*beta2^2*exp(beta2*x)*cos(beta2*x);
+a1911=2*D2*beta2^2*exp(-beta2*x)*sin(beta2*x);
+a1912=-2*D2*beta2^2*exp(-beta2*x)*cos(beta2*x);
+a1913=-2*D3*beta3^2*exp(beta3*x)*sin(beta3*x);
+a1914=2*D3*beta3^2*exp(beta3*x)*cos(beta3*x);
+a1915=2*D3*beta3^2*exp(-beta3*x)*sin(beta3*x);
+a1916=-2*D3*beta3^2*exp(-beta3*x)*cos(beta3*x);
+a1917=2*beta7^2*exp(beta7*x)*sin(beta7*x);
+a1918=-2*beta7^2*exp(beta7*x)*cos(beta7*x);
+a1919=-2*beta7^2*exp(-beta7*x)*sin(beta7*x);
+a1920=2*beta7^2*exp(-beta7*x)*cos(beta7*x);
+x=L1;
+a2001=0;
+a2002=0;
+a2003=0;
+a2004=0;
+a2005=0;
+a2006=0;
+a2007=0;
+a2008=0;
+a2009=-2*D2*beta2^3*exp(beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a2010=2*D2*beta2^3*exp(beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a2011=2*D2*beta2^3*exp(-beta2*x)*(cos(beta2*x)-sin(beta2*x));
+a2012=2*D2*beta2^3*exp(-beta2*x)*(cos(beta2*x)+sin(beta2*x));
+a2013=-2*D3*beta3^3*exp(beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a2014=2*D3*beta3^3*exp(beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a2015=2*D3*beta3^3*exp(-beta3*x)*(cos(beta3*x)-sin(beta3*x));
+a2016=2*D3*beta3^3*exp(-beta3*x)*(cos(beta3*x)+sin(beta3*x));
+a2017=2*beta7^3*exp(beta7*x)*(cos(beta7*x)+sin(beta7*x));
+a2018=-2*beta7^3*exp(beta7*x)*(cos(beta7*x)-sin(beta7*x));
+a2019=-2*beta7^3*exp(-beta7*x)*(cos(beta7*x)-sin(beta7*x));
+a2020=-2*beta7^3*exp(-beta7*x)*(cos(beta7*x)+sin(beta7*x));
+A=[a0101 a0102 a0103 a0104 a0105 a0106 a0107 a0108 a0109 a0110 a0111 a0112 a0113 a0114 a0115 a0116 a0117 a0118 a0119 a0120;...
+   a0201 a0202 a0203 a0204 a0205 a0206 a0207 a0208 a0209 a0210 a0211 a0212 a0213 a0214 a0215 a0216 a0217 a0218 a0219 a0220;...
+   a0301 a0302 a0303 a0304 a0305 a0306 a0307 a0308 a0309 a0310 a0311 a0312 a0313 a0314 a0315 a0316 a0317 a0318 a0319 a0320;...
+   a0401 a0402 a0403 a0404 a0405 a0406 a0407 a0408 a0409 a0410 a0411 a0412 a0413 a0414 a0415 a0416 a0417 a0418 a0419 a0420;...
+   a0501 a0502 a0503 a0504 a0505 a0506 a0507 a0508 a0509 a0510 a0511 a0512 a0513 a0514 a0515 a0516 a0517 a0518 a0519 a0520;...
+   a0601 a0602 a0603 a0604 a0605 a0606 a0607 a0608 a0609 a0610 a0611 a0612 a0613 a0614 a0615 a0616 a0617 a0618 a0619 a0620;...
+   a0701 a0702 a0703 a0704 a0705 a0706 a0707 a0708 a0709 a0710 a0711 a0712 a0713 a0714 a0715 a0716 a0717 a0718 a0719 a0720;...
+   a0801 a0802 a0803 a0804 a0805 a0806 a0807 a0808 a0809 a0810 a0811 a0812 a0813 a0814 a0815 a0816 a0817 a0818 a0819 a0820;...
+   a0901 a0902 a0903 a0904 a0905 a0906 a0907 a0908 a0909 a0910 a0911 a0912 a0913 a0914 a0915 a0916 a0917 a0918 a0919 a0920;...
+   a1001 a1002 a1003 a1004 a1005 a1006 a1007 a1008 a1009 a1010 a1011 a1012 a1013 a1014 a1015 a1016 a1017 a1018 a1019 a1020;...
+   a1101 a1102 a1103 a1104 a1105 a1106 a1107 a1108 a1109 a1110 a1111 a1112 a1113 a1114 a1115 a1116 a1117 a1118 a1119 a1120;...
+   a1201 a1202 a1203 a1204 a1205 a1206 a1207 a1208 a1209 a1210 a1211 a1212 a1213 a1214 a1215 a1216 a1217 a1218 a1219 a1220;...
+   a1301 a1302 a1303 a1304 a1305 a1306 a1307 a1308 a1309 a1310 a1311 a1312 a1313 a1314 a1315 a1316 a1317 a1318 a1319 a1320;...
+   a1401 a1402 a1403 a1404 a1405 a1406 a1407 a1408 a1409 a1410 a1411 a1412 a1413 a1414 a1415 a1416 a1417 a1418 a1419 a1420;...
+   a1501 a1502 a1503 a1504 a1505 a1506 a1507 a1508 a1509 a1510 a1511 a1512 a1513 a1514 a1515 a1516 a1517 a1518 a1519 a1520;...
+   a1601 a1602 a1603 a1604 a1605 a1606 a1607 a1608 a1609 a1610 a1611 a1612 a1613 a1614 a1615 a1616 a1617 a1618 a1619 a1620;...
+   a1701 a1702 a1703 a1704 a1705 a1706 a1707 a1708 a1709 a1710 a1711 a1712 a1713 a1714 a1715 a1716 a1717 a1718 a1719 a1720;...
+   a1801 a1802 a1803 a1804 a1805 a1806 a1807 a1808 a1809 a1810 a1811 a1812 a1813 a1814 a1815 a1816 a1817 a1818 a1819 a1820;...
+   a1901 a1902 a1903 a1904 a1905 a1906 a1907 a1908 a1909 a1910 a1911 a1912 a1913 a1914 a1915 a1916 a1917 a1918 a1919 a1920;...
+   a2001 a2002 a2003 a2004 a2005 a2006 a2007 a2008 a2009 a2010 a2011 a2012 a2013 a2014 a2015 a2016 a2017 a2018 a2019 a2020;];
+B=[0;0;0;0;0;0;0;0;u3d-u3;0;0;0;u3d+u2d-u3-u2;0;0;0;-u3d-u2d+u1;0;0;0;];
+C=A\B;
+N1=s/ds;N2=(L1-s)/ds;N3=(L2-L1)/ds;
+s1=zeros(N1+N2+1,1);s2=zeros(N2+N1+N3+1,1);w1=zeros(N1+N2+1,1);w2=zeros(N3+N2+N1+1,1);M1=zeros(N1+N2+1,1);
+for i=1:1:N1+1
+    s1(i,1)=(i-1)*ds;
+    s2(i,1)=(i-1)*ds;
+    w1(i,1)=C(1,1)*exp(beta2*s1(i,1))*cos(beta2*s1(i,1))+C(2,1)*exp(beta2*s1(i,1))*sin(beta2*s1(i,1))...
+           +C(3,1)*exp(-beta2*s1(i,1))*cos(beta2*s1(i,1))+C(4,1)*exp(-beta2*s1(i,1))*sin(beta2*s1(i,1))...
+           +C(5,1)*exp(beta3*s1(i,1))*cos(beta3*s1(i,1))+C(6,1)*exp(beta3*s1(i,1))*sin(beta3*s1(i,1))...
+           +C(7,1)*exp(-beta3*s1(i,1))*cos(beta3*s1(i,1))+C(8,1)*exp(-beta3*s1(i,1))*sin(beta3*s1(i,1))+u3;
+    w2(i,1)=D2*(C(1,1)*exp(beta2*s2(i,1))*cos(beta2*s2(i,1))+C(2,1)*exp(beta2*s2(i,1))*sin(beta2*s2(i,1))...
+           +C(3,1)*exp(-beta2*s2(i,1))*cos(beta2*s2(i,1))+C(4,1)*exp(-beta2*s2(i,1))*sin(beta2*s2(i,1)))...
+           +D3*(C(5,1)*exp(beta3*s2(i,1))*cos(beta3*s2(i,1))+C(6,1)*exp(beta3*s2(i,1))*sin(beta3*s2(i,1))...
+           +C(7,1)*exp(-beta3*s2(i,1))*cos(beta3*s2(i,1))+C(8,1)*exp(-beta3*s2(i,1))*sin(beta3*s2(i,1)))+u3+u2;
+   M1(i,1)=2*EI1*(beta2^2*(C(1,1)*exp(beta2*s1(i,1))*sin(beta2*s1(i,1))-C(2,1)*exp(beta2*s1(i,1))*cos(beta2*s1(i,1))...
+           -C(3,1)*exp(-beta2*s1(i,1))*sin(beta2*s1(i,1))+C(4,1)*exp(-beta2*s1(i,1))*cos(beta2*s1(i,1)))...
+           +beta3^2*(C(5,1)*exp(beta3*s1(i,1))*sin(beta3*s1(i,1))-C(6,1)*exp(beta3*s1(i,1))*cos(beta3*s1(i,1))...
+           -C(7,1)*exp(-beta3*s1(i,1))*sin(beta3*s1(i,1))+C(8,1)*exp(-beta3*s1(i,1))*cos(beta3*s1(i,1))));    
+end
+for j=1:1:N2+1
+   s1(j+N1,1)=(j-1)*ds+s; 
+   s2(j+N1,1)=(j-1)*ds+s;
+   w1(j+N1,1)=C(9,1)*exp(beta2*s1(j+N1,1))*cos(beta2*s1(j+N1,1))+C(10,1)*exp(beta2*s1(j+N1,1))*sin(beta2*s1(j+N1,1))...
+             +C(11,1)*exp(-beta2*s1(j+N1,1))*cos(beta2*s1(j+N1,1))+C(12,1)*exp(-beta2*s1(j+N1,1))*sin(beta2*s1(j+N1,1))...
+             +C(13,1)*exp(beta3*s1(j+N1,1))*cos(beta3*s1(j+N1,1))+C(14,1)*exp(beta3*s1(j+N1,1))*sin(beta3*s1(j+N1,1))...
+             +C(15,1)*exp(-beta3*s1(j+N1,1))*cos(beta3*s1(j+N1,1))+C(16,1)*exp(-beta3*s1(j+N1,1))*sin(beta3*s1(j+N1,1))+u3d;
+   w2(j+N1,1)=D2*(C(9,1)*exp(beta2*s2(j+N1,1))*cos(beta2*s2(j+N1,1))+C(10,1)*exp(beta2*s2(j+N1,1))*sin(beta2*s2(j+N1,1))...
+             +C(11,1)*exp(-beta2*s2(j+N1,1))*cos(beta2*s2(j+N1,1))+C(12,1)*exp(-beta2*s2(j+N1,1))*sin(beta2*s2(j+N1,1)))...
+             +D3*(C(13,1)*exp(beta3*s2(j+N1,1))*cos(beta3*s2(j+N1,1))+C(14,1)*exp(beta3*s2(j+N1,1))*sin(beta3*s2(j+N1,1))...
+             +C(15,1)*exp(-beta3*s2(j+N1,1))*cos(beta3*s2(j+N1,1))+C(16,1)*exp(-beta3*s2(j+N1,1))*sin(beta3*s2(j+N1,1)))+u3d+u2d;
+   M1(j+N1,1)=2*EI1*(beta2^2*(C(9,1)*exp(beta2*s1(j+N1,1))*sin(beta2*s1(j+N1,1))-C(10,1)*exp(beta2*s1(j+N1,1))*cos(beta2*s1(j+N1,1))...
+             -C(11,1)*exp(-beta2*s1(j+N1,1))*sin(beta2*s1(j+N1,1))+C(12,1)*exp(-beta2*s1(j+N1,1))*cos(beta2*s1(j+N1,1)))...
+             +beta3^2*(C(13,1)*exp(beta3*s1(j+N1,1))*sin(beta3*s1(j+N1,1))-C(14,1)*exp(beta3*s1(j+N1,1))*cos(beta3*s1(j+N1,1))...
+             -C(15,1)*exp(-beta3*s1(j+N1,1))*sin(beta3*s1(j+N1,1))+C(16,1)*exp(-beta3*s1(j+N1,1))*cos(beta3*s1(j+N1,1))));  
+end
+for k=1:1:N3+1
+   s2(k+N1+N2,1)=(k-1)*ds+L1;
+   w2(k+N1+N2,1)=C(17,1)*exp(beta7*s2(k+N1+N2,1))*cos(beta7*s2(k+N1+N2,1))+C(18,1)*exp(beta7*s2(k+N1+N2,1))*sin(beta7*s2(k+N1+N2,1))...
+                +C(19,1)*exp(-beta7*s2(k+N1+N2,1))*cos(beta7*s2(k+N1+N2,1))+C(20,1)*exp(-beta7*s2(k+N1+N2,1))*sin(beta7*s2(k+N1+N2,1))+u1;
+end
+figure(1)
+subplot(231);
+plot(s1,w1)
+hold on
+%plot(s2,w2)
+subplot(232);
+plot(s1,M1);
